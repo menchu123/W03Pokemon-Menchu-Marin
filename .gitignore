@@ -136,4 +136,4 @@ dist
 .tern-port
 
 styles.css
-styles.map.css
+styles.css.map

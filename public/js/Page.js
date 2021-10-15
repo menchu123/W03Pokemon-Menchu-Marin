@@ -4,13 +4,13 @@ import PokeCard from "./Poke-card.js";
 
 class Page extends Component {
   constructor(parentElement) {
-    super(parentElement, ".app-container");
+    super(parentElement, "app-container");
 
     this.generateHTML();
   }
 
   generateHTML() {
-    this.element.innerHTML = `     <header class="header">
+    const html = `     <header class="header">
         <nav class="header__nav"></nav>
       </header>
       <main class="main">
@@ -20,6 +20,8 @@ class Page extends Component {
           </ul>
         </section>
       </main>`;
+
+    this.element.innerHTML = html;
 
     const pokeList = document.querySelector(".pokemon-list");
     new PokeCard(pokeList);

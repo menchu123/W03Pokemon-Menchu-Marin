@@ -19,6 +19,7 @@ module.exports = {
     "no-console": "off",
     "import/extensions": "off",
     "lines-between-class-members": "off",
+    "no-new": "off",
   },
   parser: "@babel/eslint-parser",
 };

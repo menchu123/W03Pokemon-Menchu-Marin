@@ -9,7 +9,7 @@ class PokeCard extends Component {
   }
 
   generateHtml() {
-    this.element.innerHTML = `
+    const html = `
                   <img
                 src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/131.svg"
                 alt="Lapras"
@@ -23,6 +23,8 @@ class PokeCard extends Component {
               </ul>
               <div class="favorite"></div>
     `;
+
+    this.element.innerHTML = html;
   }
 }
 

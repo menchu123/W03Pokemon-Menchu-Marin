@@ -3,8 +3,12 @@ import Component from "./Component.js";
 import PokeCard from "./Poke-card.js";
 
 class Page extends Component {
-  constructor(parentElement) {
+  pokemonServices;
+
+  constructor(parentElement, pokemonServices) {
     super(parentElement, "app-container");
+
+    this.pokemonServices = pokemonServices;
 
     this.generateHTML();
   }
@@ -23,8 +27,16 @@ class Page extends Component {
 
     this.element.innerHTML = html;
 
-    const pokeList = document.querySelector(".pokemon-list");
-    new PokeCard(pokeList);
+    const pokeListContainer = document.querySelector(".pokemon-list");
+
+    (async () => {
+      const getPokeService = await this.pokemonServices.getPokemons();
+      const getPokeList = getPokeService.results;
+      getPokeList.forEach(
+        (pokemon) => new PokeCard(pokeListContainer, pokemon.url)
+      );
+    })();
+    // new PokeCard(pokeList);
   }
 }
 

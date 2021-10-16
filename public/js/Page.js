@@ -33,6 +33,10 @@ class Page extends Component {
           <ul class="pokemon-list">
           </ul>
         </section>
+        <div class="pagination">
+          <button class="pagination_previous"><</button>
+          <button class="pagination_next">></button>
+        </div>
       </main>`;
 
     this.element.innerHTML = html;

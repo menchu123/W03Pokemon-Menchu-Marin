@@ -43,12 +43,12 @@ class Page extends Component {
   generateHTML(url) {
     const html = `     <header class="header">
         <nav class="header__nav">
-        <div class="logo">Pokedex<div>
-        <button class="my-pokemon">MY POKEMON</button>
+        <button class="my-pokemon"></i>MY POKEMON</button>
+        <h1 class="main__title"><img class="main__logo" src="img/pokemon-logo-black-transparent.png"><img></h1>
         </nav>
       </header>
       <main class="main">
-        <h1 class="main__title"><img class="main__logo" src="img/pokemon-logo-black-transparent.png"><img></h1>
+        
         <section class="pokemon-container">
           <ul class="pokemon-list">
           </ul>
@@ -84,6 +84,13 @@ class Page extends Component {
       ">",
       this.nextPage
     );
+
+    if (this.page === 0) {
+      const previousPageButton = document.querySelector(
+        ".pagination__previous"
+      );
+      previousPageButton.classList.add("button--disabled");
+    }
   }
 }
 

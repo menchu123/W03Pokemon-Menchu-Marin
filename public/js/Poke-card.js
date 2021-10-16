@@ -21,7 +21,6 @@ class PokeCard extends Component {
       this.pokeImg = getPokeData.sprites.other.dream_world.front_default;
       const pokeTypes = getPokeData.types;
       pokeTypes.forEach((type) => this.pokeType.push(type.type.name));
-      console.log(this.pokeType);
 
       this.generateHtml();
     })();

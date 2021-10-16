@@ -5,14 +5,22 @@ import PokeCard from "./Poke-card.js";
 class Page extends Component {
   pokemonServices;
   url;
+  page;
 
-  constructor(parentElement, pokemonServices, url) {
+  constructor(parentElement, pokemonServices, url, page = 0) {
     super(parentElement, "app-container");
 
     this.pokemonServices = pokemonServices;
-    this.url = url;
+    this.page = page;
+    this.url = url + this.getPageURL();
 
     this.generateHTML();
+  }
+
+  getPageURL() {
+    const offset = this.page * 9;
+    const urlPage = `?offset=${offset}&limit=9`;
+    return urlPage;
   }
 
   generateHTML() {
@@ -34,9 +42,9 @@ class Page extends Component {
     (async () => {
       const getPokeService = await this.pokemonServices.getPokemons(this.url);
       const getPokeList = getPokeService.results;
-      getPokeList.forEach(
-        (pokemon) => new PokeCard(pokeListContainer, pokemon.url)
-      );
+      getPokeList.forEach((pokemon) => {
+        new PokeCard(pokeListContainer, pokemon.url);
+      });
     })();
   }
 }

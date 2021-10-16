@@ -8,5 +8,6 @@ const pokemonServices = new PokeServices();
 new Page(
   pokeContainer,
   pokemonServices,
-  "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=9"
+  "https://pokeapi.co/api/v2/pokemon/",
+  0
 );

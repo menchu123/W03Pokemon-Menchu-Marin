@@ -4,11 +4,13 @@ import PokeCard from "./Poke-card.js";
 
 class Page extends Component {
   pokemonServices;
+  url;
 
-  constructor(parentElement, pokemonServices) {
+  constructor(parentElement, pokemonServices, url) {
     super(parentElement, "app-container");
 
     this.pokemonServices = pokemonServices;
+    this.url = url;
 
     this.generateHTML();
   }
@@ -30,13 +32,12 @@ class Page extends Component {
     const pokeListContainer = document.querySelector(".pokemon-list");
 
     (async () => {
-      const getPokeService = await this.pokemonServices.getPokemons();
+      const getPokeService = await this.pokemonServices.getPokemons(this.url);
       const getPokeList = getPokeService.results;
       getPokeList.forEach(
         (pokemon) => new PokeCard(pokeListContainer, pokemon.url)
       );
     })();
-    // new PokeCard(pokeList);
   }
 }
 

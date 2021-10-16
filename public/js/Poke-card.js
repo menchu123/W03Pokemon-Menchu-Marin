@@ -1,9 +1,30 @@
 /* eslint-disable no-new */
 import Component from "./Component.js";
+import PokeServices from "./Poke-services.js";
 
 class PokeCard extends Component {
+  url;
+  pokeName;
+  pokeNumber;
+  pokeImg;
+  pokeType = [];
+
   constructor(parentElement, url) {
     super(parentElement, "pokemon-card", "li");
+    this.url = url;
+
+    (async () => {
+      const pokeServices = new PokeServices(this.url);
+      const getPokeData = await pokeServices.getPokemons(this.url);
+      this.pokeName = getPokeData.name.toUpperCase();
+      this.pokeNumber = getPokeData.id;
+      this.pokeImg = getPokeData.sprites.other.dream_world.front_default;
+      const pokeTypes = getPokeData.types;
+      pokeTypes.forEach((type) => this.pokeType.push(type.type.name));
+      console.log(this.pokeType);
+
+      this.generateHtml();
+    })();
 
     this.generateHtml();
   }
@@ -11,15 +32,19 @@ class PokeCard extends Component {
   generateHtml() {
     const html = `
                   <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/131.svg"
-                alt="Lapras"
+                src="${this.pokeImg}"
+                alt="${this.pokeName}"
                 class="pokemon-card__img"
               />
-              <span class="pokemon-card__number">#131</span>
-              <span class="pokemon-card__name">Lapras</span>
+              <span class="pokemon-card__number">#${this.pokeNumber}</span>
+              <span class="pokemon-card__name">${this.pokeName}</span>
               <ul class="pokemon-card__types">
-                <li class="pokemon-card__type">WATER</li>
-                <li class="pokemon-card__type">ICE</li>
+              ${
+                this.pokeType.length < 2
+                  ? `<li class="pokemon-card__type">${this.pokeType[0]}</li>`
+                  : `<li class="pokemon-card__type">${this.pokeType[0]}</li>
+                <li class="pokemon-card__type">${this.pokeType[1]}</li>`
+              }
               </ul>
               <div class="favorite"></div>
     `;

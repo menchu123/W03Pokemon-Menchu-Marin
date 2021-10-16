@@ -1,29 +1,46 @@
 /* eslint-disable no-new */
 import Component from "./Component.js";
 import PokeCard from "./Poke-card.js";
+import PaginationButton from "./Pagination.js";
 
 class Page extends Component {
   pokemonServices;
   url;
-  page;
+  page = 10;
+  pagedURL;
 
-  constructor(parentElement, pokemonServices, url, page = 0) {
+  constructor(parentElement, pokemonServices, url) {
     super(parentElement, "app-container");
 
     this.pokemonServices = pokemonServices;
-    this.page = page;
-    this.url = url + this.getPageURL();
-
-    this.generateHTML();
+    this.url = url;
+    this.pagedURL = url;
+    this.getPageURL();
+    this.generateHTML(this.pagedURL);
   }
 
-  getPageURL() {
+  getPageURL = () => {
     const offset = this.page * 9;
     const urlPage = `?offset=${offset}&limit=9`;
-    return urlPage;
-  }
+    const pagedURL = this.url + urlPage;
+    this.pagedURL = pagedURL;
+  };
 
-  generateHTML() {
+  previousPage = () => {
+    if (this.page > 0) {
+      this.page--;
+      this.getPageURL();
+      this.generateHTML(this.pagedURL);
+    }
+  };
+
+  nextPage = () => {
+    this.page++;
+    this.getPageURL();
+    this.generateHTML(this.pagedURL);
+  };
+
+  generateHTML(url) {
     const html = `     <header class="header">
         <nav class="header__nav"></nav>
       </header>
@@ -34,8 +51,7 @@ class Page extends Component {
           </ul>
         </section>
         <div class="pagination">
-          <button class="pagination_previous"><</button>
-          <button class="pagination_next">></button>
+          
         </div>
       </main>`;
 
@@ -44,12 +60,27 @@ class Page extends Component {
     const pokeListContainer = document.querySelector(".pokemon-list");
 
     (async () => {
-      const getPokeService = await this.pokemonServices.getPokemons(this.url);
+      const getPokeService = await this.pokemonServices.getPokemons(url);
       const getPokeList = getPokeService.results;
       getPokeList.forEach((pokemon) => {
         new PokeCard(pokeListContainer, pokemon.url);
       });
     })();
+
+    const paginationContainer = document.querySelector(".pagination");
+    new PaginationButton(
+      paginationContainer,
+      "pagination__previous",
+      "<",
+      this.previousPage
+    );
+
+    new PaginationButton(
+      paginationContainer,
+      "pagination__next",
+      ">",
+      this.nextPage
+    );
   }
 }
 

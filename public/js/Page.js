@@ -48,7 +48,7 @@ class Page extends Component {
         </nav>
       </header>
       <main class="main">
-        <h1 class="main__title">Browse Pokémon</h1>
+        <h1 class="main__title"><img class="main__logo" src="img/pokemon-logo-black-transparent.png"><img></h1>
         <section class="pokemon-container">
           <ul class="pokemon-list">
           </ul>

@@ -6,7 +6,7 @@ import PaginationButton from "./Pagination.js";
 class Page extends Component {
   pokemonServices;
   url;
-  page = 10;
+  page = 0;
   pagedURL;
 
   constructor(parentElement, pokemonServices, url) {

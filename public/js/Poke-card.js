@@ -31,6 +31,8 @@ class PokeCard extends Component {
 
   generateHtml() {
     const html = `
+                  <i class="far fa-heart" "pokemon-card__favorite" "pokemon-card__favorite--unselected"></i>
+                  <i class="fas fa-heart" "pokemon-card__favorite" "pokemon-card__favorite--selected"></i>
                   <img
                 src="${this.pokeImg}"
                 alt="${this.pokeName}"
@@ -46,7 +48,7 @@ class PokeCard extends Component {
                 <li class="pokemon-card__type">${this.pokeType[1]}</li>`
               }
               </ul>
-              <div class="favorite"></div>
+              
     `;
 
     this.element.innerHTML = html;

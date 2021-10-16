@@ -8,8 +8,27 @@
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
-  width: 100vw;
+  //width: 100vw;
   background-color: #fff1e6;
+}
+
+.header {
+  width: 100%;
+  position: relative;
+}
+.my-pokemon {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  border: none;
+  background-color: inherit;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  cursor: pointer;
+  color: #1d120c;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .main {
@@ -21,6 +40,7 @@ body {
   color: #fff;
   text-align: center;
   font-weight: 400;
+  margin: 10px;
 }
 
 .main__logo {
@@ -72,6 +92,7 @@ body {
     position: absolute;
     right: -40px;
     top: -30px;
+    filter: drop-shadow(0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2));
   }
   &__name {
     color: #1d120c;
@@ -159,4 +180,5 @@ body {
       rgba(255, 255, 255, 1) 100%
     );
   }
+  cursor: default;
 }

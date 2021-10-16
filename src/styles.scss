@@ -7,6 +7,7 @@ body * {
 }
 body {
   margin: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 .app-container {
@@ -35,5 +36,9 @@ body {
   background-color: hotpink;
   &__img {
     max-width: 150px;
+    max-height: 150px;
+  }
+  &__name {
+    color: #fff;
   }
 }

@@ -42,7 +42,10 @@ class Page extends Component {
 
   generateHTML(url) {
     const html = `     <header class="header">
-        <nav class="header__nav"></nav>
+        <nav class="header__nav">
+        <div class="logo">Pokedex<div>
+        <button class="my-pokemon">MY POKEMON</button>
+        </nav>
       </header>
       <main class="main">
         <h1 class="main__title">Browse Pokémon</h1>

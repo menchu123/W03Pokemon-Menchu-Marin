@@ -17,11 +17,12 @@ class PokeCard extends Component {
       const pokeServices = new PokeServices(this.url);
       const getPokeData = await pokeServices.getPokemons(this.url);
       this.pokeName = getPokeData.name.toUpperCase();
-      this.pokeNumber = getPokeData.id;
+      this.pokeNumber = getPokeData.id.toString().padStart(3, "0");
       this.pokeImg = getPokeData.sprites.other.dream_world.front_default;
       const pokeTypes = getPokeData.types;
-      pokeTypes.forEach((type) => this.pokeType.push(type.type.name));
-
+      pokeTypes.forEach((type) =>
+        this.pokeType.push(type.type.name.toUpperCase())
+      );
       this.generateHtml();
     })();
 
@@ -30,6 +31,8 @@ class PokeCard extends Component {
 
   generateHtml() {
     const html = `
+                  <i class="far fa-heart" "pokemon-card__favorite" "pokemon-card__favorite--unselected"></i>
+                  <i class="fas fa-heart" "pokemon-card__favorite" "pokemon-card__favorite--selected"></i>
                   <img
                 src="${this.pokeImg}"
                 alt="${this.pokeName}"
@@ -45,7 +48,7 @@ class PokeCard extends Component {
                 <li class="pokemon-card__type">${this.pokeType[1]}</li>`
               }
               </ul>
-              <div class="favorite"></div>
+              
     `;
 
     this.element.innerHTML = html;

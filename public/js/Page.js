@@ -84,6 +84,13 @@ class Page extends Component {
       ">",
       this.nextPage
     );
+
+    if (this.page === 0) {
+      const previousPageButton = document.querySelector(
+        ".pagination__previous"
+      );
+      previousPageButton.classList.add("button--disabled");
+    }
   }
 }
 

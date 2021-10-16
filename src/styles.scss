@@ -9,7 +9,7 @@ body {
   margin: 0;
   font-family: "Roboto", sans-serif;
   width: 100vw;
-  background-color: #001330;
+  background-color: #fff1e6;
 }
 
 .main {
@@ -51,10 +51,11 @@ body {
   width: 330px;
   height: 150px;
   background: rgb(232, 231, 233);
+  background: rgb(255, 247, 240);
   background: linear-gradient(
     0deg,
-    rgba(232, 231, 233, 1) 0%,
-    rgba(255, 255, 255, 1) 80%
+    rgba(255, 247, 240, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
   );
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -64,6 +65,7 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: 30px;
+  cursor: default;
   &__img {
     max-width: 180px;
     max-height: 180px;
@@ -72,7 +74,7 @@ body {
     top: -30px;
   }
   &__name {
-    color: #000;
+    color: #1d120c;
     font-size: 25px;
     font-weight: 500;
     display: block;
@@ -85,12 +87,12 @@ body {
   }
   &__type {
     font-size: 14px;
-    border: 1px solid #c4c4c4;
+    border: 1px solid #e8d2c5;
     padding: 4px;
     border-radius: 4px;
     margin-right: 5px;
     color: #fff;
-    background-color: darkslateblue;
+    background-color: #dcbaa7;
   }
 }
 
@@ -106,6 +108,14 @@ body {
   cursor: pointer;
 }
 
+.far:hover {
+  display: none;
+}
+
+.far:hover ~ .fas {
+  display: inline;
+}
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -113,29 +123,40 @@ body {
 .pagination__previous,
 .pagination__next {
   border: none;
-  color: darkslateblue;
+  color: #1d120c;
   font-size: 20px;
   font-weight: 600;
   width: 60px;
   height: 60px;
   margin: 5px;
   border-radius: 50%;
-  background: rgb(232, 231, 233);
+  background: rgb(255, 247, 240);
   background: linear-gradient(
     0deg,
-    rgba(232, 231, 233, 1) 0%,
-    rgba(255, 255, 255, 1) 80%
+    rgba(255, 247, 240, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
   );
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   cursor: pointer;
+  margin-bottom: 40px;
+
+  &:hover {
+    background: linear-gradient(
+      190deg,
+      rgba(255, 247, 240, 1) 0%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
 }
 
-.pagination__previous:hover,
-.pagination__next:hover {
-  background: linear-gradient(
-    190deg,
-    rgba(232, 231, 233, 1) 0%,
-    rgba(255, 255, 255, 1) 80%
-  );
+.button--disabled {
+  opacity: 0.5;
+  &:hover {
+    background: linear-gradient(
+      0deg,
+      rgba(255, 247, 240, 1) 0%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
 }

@@ -18,15 +18,19 @@ class PokeCard extends Component {
   generateHtml() {
     const html = `
                   <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/131.svg"
-                alt="Lapras"
+                src="${this.pokeImg}"
+                alt="${this.pokeName}"
                 class="pokemon-card__img"
               />
-              <span class="pokemon-card__number">#131</span>
-              <span class="pokemon-card__name">Lapras</span>
+              <span class="pokemon-card__number">#${this.pokeNumber}</span>
+              <span class="pokemon-card__name">${this.pokeName}</span>
               <ul class="pokemon-card__types">
-                <li class="pokemon-card__type">WATER</li>
-                <li class="pokemon-card__type">ICE</li>
+              ${
+                this.pokeType.length > 2
+                  ? `<li class="pokemon-card__type">${this.pokeType[0]}</li>`
+                  : `<li class="pokemon-card__type">${this.pokeType[0]}</li>
+                <li class="pokemon-card__type">${this.pokeType[1]}</li>`
+              }
               </ul>
               <div class="favorite"></div>
     `;

@@ -3,6 +3,11 @@ import Component from "./Component.js";
 
 class PokeCard extends Component {
   url;
+  pokeName;
+  pokeNumber;
+  pokeImg;
+  pokeType = [];
+
   constructor(parentElement, url) {
     super(parentElement, "pokemon-card", "li");
     this.url = url;

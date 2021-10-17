@@ -12,10 +12,13 @@ class PokeCard extends Component {
   pokeType = [];
   favButton;
 
-  constructor(parentElement, pokemon) {
+  constructor(parentElement, pokemon, isSelected, id) {
     super(parentElement, "pokemon-card", "li");
     this.pokemon = pokemon;
     this.url = this.pokemon.url;
+    this.isSelected = isSelected;
+    this.id = id;
+    console.log(this.pokemon.id);
 
     (async () => {
       const pokeServices = new PokeServices(this.url);
@@ -33,7 +36,7 @@ class PokeCard extends Component {
     this.generateHtml();
   }
 
-  action = () => {
+  favPokemon = () => {
     console.log(this.url);
     const pokemonServices = new PokeServices();
     pokemonServices.postPokemons(
@@ -44,7 +47,19 @@ class PokeCard extends Component {
       "https://pokeapi-menchu.herokuapp.com/pokemon"
     );
     console.log(this.button);
-    this.button.element.classList.toggle("fas");
+    this.button.element.classList.add("fas");
+  };
+
+  unfavPokemon = () => {
+    console.log(this.url);
+    const pokemonServices = new PokeServices();
+    pokemonServices.deletePokemon(
+      "https://pokeapi-menchu.herokuapp.com/pokemon/",
+      this.pokemon.id
+    );
+    this.button.element.classList.remove("fas");
+    this.button.element.classList.add("far");
+    console.log(this.button);
   };
 
   generateHtml() {
@@ -72,12 +87,9 @@ class PokeCard extends Component {
     this.element.innerHTML = html;
 
     const favoriteButtonContainer = this.element.querySelector(".favorite");
-    this.button = new Button(
-      favoriteButtonContainer,
-      "far fa-heart",
-      "",
-      this.action
-    );
+    const buttonClass = this.isSelected ? "fas fa-heart" : "far fa-heart";
+    const action = this.isSelected ? this.unfavPokemon : this.favPokemon;
+    this.button = new Button(favoriteButtonContainer, buttonClass, "", action);
   }
 }
 

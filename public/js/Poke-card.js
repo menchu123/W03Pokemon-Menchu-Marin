@@ -97,11 +97,11 @@ class PokeCard extends Component {
     const html = `<div class="favorite">
                 
                   </div>
-                  <img
+                <a href= "pokemon-detail.html"><img
                 src="${this.pokeImg}"
                 alt="${this.pokeName}"
                 class="pokemon-card__img"
-              />
+              /></a>
               <span class="pokemon-card__number">#${this.pokeNumber}</span>
               <span class="pokemon-card__name">${this.pokeName}</span>
               <ul class="pokemon-card__types">

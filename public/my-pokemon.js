@@ -1,23 +1,34 @@
-import Page from "./js/Page.js";
+import MyPokemonPage from "./js/MyPokemonPage.js";
 import PokeServices from "./js/Poke-services.js";
 
 const pokeContainer = document.querySelector("body");
 
 const pokemonServices = new PokeServices();
 
-const proxy = "https://cors-anywhere.herokuapp.com/";
-
-new Page(
+new MyPokemonPage(
   pokeContainer,
   pokemonServices,
-  `${proxy}https://pokeapi-menchu.herokuapp.com/`
+  `https://pokeapi-menchu.herokuapp.com/pokemon`
 );
 
-(async () => {
-  const response = await fetch(
-    `${proxy}https://pokemon-api-w03-wkch.herokuapp.com/pokemon`
-  );
-  const pokemons = await response.json();
-  console.log(pokemons);
-  return pokemons;
-})();
+// pokemonServices.postPokemons(
+//   {
+//     name: "pikachu",
+//     type: "electric",
+//   },
+//   "https://pokeapi-menchu.herokuapp.com/pokemon"
+// );
+
+// pokemonServices.deletePokemon(
+//   "https://pokeapi-menchu.herokuapp.com/pokemon/",
+//   6
+// );
+
+// (async () => {
+//   const response = await fetch(
+//     `https://pokemon-api-w03-wkch.herokuapp.com/pokemon`
+//   );
+//   const pokemons = await response.json();
+//   console.log(pokemons);
+//   return pokemons;
+// })();

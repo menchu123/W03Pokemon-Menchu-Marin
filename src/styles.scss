@@ -63,6 +63,7 @@ body {
   justify-content: space-evenly;
   flex-wrap: wrap;
   padding: 0;
+  height: 570px;
 }
 
 .pokemon-card {
@@ -118,6 +119,8 @@ body {
 }
 
 .fa-heart {
+  display: block;
+  max-width: max-content;
   font-size: 23px;
   color: pink;
   margin-bottom: 10px;

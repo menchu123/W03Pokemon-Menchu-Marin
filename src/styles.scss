@@ -74,6 +74,7 @@ h2 {
   align-content: flex-start;
   flex-wrap: wrap;
   padding: 0;
+  margin-left: 40px;
   height: 570px;
 }
 
@@ -273,7 +274,19 @@ h2 {
     margin-bottom: 5px;
     color: #fff;
     background-color: #dcbaa7;
+    text-align: center;
   }
+}
+
+.fa-times {
+  color: #1d120c;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  height: 25px;
+  width: 25px;
+  text-align: center;
+  cursor: pointer;
 }
 
 table {

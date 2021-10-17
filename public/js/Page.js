@@ -67,6 +67,11 @@ class Page extends Component {
       const getPokeList = getPokeService.results;
       getPokeList.forEach((pokemon) => {
         new PokeCard(pokeListContainer, pokemon);
+        const favoriteButton = document.querySelector(".fa-heart");
+        console.log(favoriteButton);
+        favoriteButton.addEventListener("click", () => {
+          console.log("hi");
+        });
       });
     })();
 

@@ -1,4 +1,4 @@
-import PaginationButton from "../Pagination";
+import Button from "../Button";
 
 describe("Given a Pagination class constructor", () => {
   describe("When it receives a div container, a 'patata' class and a 'test' text", () => {
@@ -6,7 +6,7 @@ describe("Given a Pagination class constructor", () => {
       const container = document.createElement("div");
       const text = "test";
 
-      const button = new PaginationButton(container, "patata", text);
+      const button = new Button(container, "patata", text);
 
       expect(button.element.textContent).toBe(text);
     });
@@ -17,7 +17,7 @@ describe("Given a Pagination class constructor", () => {
       const container = document.createElement("div");
       const action = jest.fn();
 
-      const button = new PaginationButton(container, "patata", "test", action);
+      const button = new Button(container, "patata", "test", action);
       button.element.dispatchEvent(new Event("click"));
 
       expect(action).toHaveBeenCalled();

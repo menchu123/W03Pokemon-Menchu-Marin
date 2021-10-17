@@ -127,19 +127,6 @@ body {
   cursor: pointer;
 }
 
-.fas {
-  display: none;
-  cursor: pointer;
-}
-
-.far:hover {
-  display: none;
-}
-
-.far:hover ~ .fas {
-  display: inline;
-}
-
 .pagination {
   display: flex;
   justify-content: center;

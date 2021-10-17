@@ -43,8 +43,8 @@ class Page extends Component {
   generateHTML(url) {
     const html = `     <header class="header">
         <nav class="header__nav">
-        <button class="my-pokemon"></i>MY POKEMON</button>
-        <h1 class="main__title"><img class="main__logo" src="img/pokemon-logo-black-transparent.png"><img></h1>
+        <button class="my-pokemon" onclick="location.href='my-pokemon.html'"></i>MY POKEMON</button>
+        <h1 class="main__title"><img class="main__logo" src="img/pokemon-logo-black-transparent.png" alt="Pokemon Logo" onclick="location.href='index.html'"><img></h1>
         </nav>
       </header>
       <main class="main">
@@ -65,7 +65,6 @@ class Page extends Component {
     (async () => {
       const getPokeService = await this.pokemonServices.getPokemons(url);
       const getPokeList = getPokeService.results;
-      console.log(getPokeList);
       getPokeList.forEach((pokemon) => {
         new PokeCard(pokeListContainer, pokemon);
       });

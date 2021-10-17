@@ -10,7 +10,7 @@ body {
 }
 
 .header {
-  width: 100%;
+  width: 1200px;
   position: relative;
 }
 .my-pokemon {
@@ -190,13 +190,21 @@ h2 {
   cursor: default;
 }
 
-.main-detail {
-  display: flex;
-  justify-content: center;
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.1);
 }
+
+.main-detail {
+  width: 1200px;
+}
+
 .pokemon-detail {
   list-style: none;
-  margin: 50px;
+  margin: 50px auto;
   width: 330px;
   height: 400px;
   background: rgb(232, 231, 233);

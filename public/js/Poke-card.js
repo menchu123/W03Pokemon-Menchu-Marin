@@ -39,7 +39,7 @@ class PokeCard extends Component {
     pokemonServices.postPokemons(
       {
         name: this.pokeName,
-        type: this.url,
+        url: this.url,
       },
       "https://pokeapi-menchu.herokuapp.com/pokemon"
     );

@@ -38,8 +38,11 @@ class MyPokemonPage extends Component {
     const pokeListContainer = document.querySelector(".pokemon-list");
 
     (async () => {
-      const getPokeService = await this.pokemonServices.getPokemons(url);
-      console.log(getPokeService);
+      const getPokeServiceLocal = await this.pokemonServices.getPokemons(url);
+      console.log(getPokeServiceLocal);
+      getPokeServiceLocal.forEach((pokemon) => {
+        new PokeCard(pokeListContainer, pokemon);
+      });
     })();
   }
 }

@@ -31,17 +31,6 @@ class PokeServices {
       },
     });
   }
-
-  //   async deletePokemon(url) {
-  //     const data = {
-  //       method: "DELETE",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     };
-  //     const response = await fetch(url, data);
-  //     return response;
-  //   }
 }
 
 export default PokeServices;

@@ -1,7 +1,6 @@
 /* eslint-disable no-new */
 import Component from "./Component.js";
 import PokeCard from "./Poke-card.js";
-import Button from "./Button.js";
 
 class MyPokemonPage extends Component {
   pokemonServices;
@@ -40,9 +39,8 @@ class MyPokemonPage extends Component {
 
     (async () => {
       const getPokeServiceLocal = await this.pokemonServices.getPokemons(url);
-      console.log(getPokeServiceLocal);
       getPokeServiceLocal.forEach((pokemon) => {
-        new PokeCard(pokeListContainer, pokemon, true);
+        new PokeCard(pokeListContainer, pokemon, true, pokemon.id);
       });
     })();
   }

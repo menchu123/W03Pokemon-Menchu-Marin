@@ -22,6 +22,27 @@ class PokeServices {
     });
     const newElement = await response.json();
   }
+
+  async deletePokemon(url, id) {
+    const urlToDelete = `${url}/${id}/`;
+    await fetch(urlToDelete, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+
+  //   async deletePokemon(url) {
+  //     const data = {
+  //       method: "DELETE",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     };
+  //     const response = await fetch(url, data);
+  //     return response;
+  //   }
 }
 
 export default PokeServices;

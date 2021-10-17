@@ -11,13 +11,18 @@ new MyPokemonPage(
   `https://pokeapi-menchu.herokuapp.com/pokemon`
 );
 
-pokemonServices.postPokemons(
-  {
-    name: "pikachu",
-    type: "electric",
-  },
-  "https://pokeapi-menchu.herokuapp.com/pokemon"
-);
+// pokemonServices.postPokemons(
+//   {
+//     name: "pikachu",
+//     type: "electric",
+//   },
+//   "https://pokeapi-menchu.herokuapp.com/pokemon"
+// );
+
+// pokemonServices.deletePokemon(
+//   "https://pokeapi-menchu.herokuapp.com/pokemon/",
+//   6
+// );
 
 // (async () => {
 //   const response = await fetch(

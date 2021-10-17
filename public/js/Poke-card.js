@@ -10,7 +10,8 @@ class PokeCard extends Component {
   pokeNumber;
   pokeImg;
   pokeType = [];
-  favButton;
+  button;
+  isSelected;
 
   constructor(parentElement, pokemon, isSelected, id) {
     super(parentElement, "pokemon-card", "li");
@@ -33,10 +34,27 @@ class PokeCard extends Component {
     })();
 
     this.generateHtml();
-    this.checkPokemon();
   }
 
-  checkPokemon = () => {};
+  selectFavedPokemon = async () => {
+    const pokemonServices = new PokeServices();
+    const favedPokemons = await pokemonServices.getPokemons(
+      "https://pokeapi-menchu.herokuapp.com/pokemon"
+    );
+
+    const favedPokemonsNames = [];
+    favedPokemons.forEach((pokemon) => {
+      favedPokemonsNames.push(pokemon.name.toLowerCase());
+    });
+
+    const isFavorite = favedPokemonsNames.some(
+      (pokemonName) => pokemonName === this.pokemon.name
+    );
+
+    if (isFavorite) {
+      this.button.element.classList.add("fas");
+    }
+  };
 
   favPokemon = async () => {
     const pokemonServices = new PokeServices();
@@ -49,12 +67,10 @@ class PokeCard extends Component {
       favedPokemonsNames.push(pokemon.name.toLowerCase());
     });
 
-    console.log(favedPokemonsNames);
-    console.log(this.pokemon.name);
     const isDuplicate = favedPokemonsNames.some(
       (pokemonName) => pokemonName === this.pokemon.name
     );
-    console.log(!isDuplicate);
+
     if (!isDuplicate) {
       pokemonServices.postPokemons(
         {
@@ -105,6 +121,8 @@ class PokeCard extends Component {
     const buttonClass = this.isSelected ? "fas fa-heart" : "far fa-heart";
     const action = this.isSelected ? this.unfavPokemon : this.favPokemon;
     this.button = new Button(favoriteButtonContainer, buttonClass, "", action);
+
+    this.selectFavedPokemon();
   }
 }
 

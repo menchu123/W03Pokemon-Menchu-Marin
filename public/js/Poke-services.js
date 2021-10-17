@@ -2,9 +2,9 @@
 class PokeServices {
   apiUrl;
 
-  // constructor(url) {
-  //   this.apiUrl = url;
-  // }
+  constructor(url) {
+    this.apiUrl = url;
+  }
 
   async getPokemons(url) {
     const response = await fetch(url);
@@ -31,17 +31,6 @@ class PokeServices {
       },
     });
   }
-
-  //   async deletePokemon(url) {
-  //     const data = {
-  //       method: "DELETE",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     };
-  //     const response = await fetch(url, data);
-  //     return response;
-  //   }
 }
 
 export default PokeServices;

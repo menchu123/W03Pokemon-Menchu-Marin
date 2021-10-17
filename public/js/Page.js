@@ -1,7 +1,7 @@
 /* eslint-disable no-new */
 import Component from "./Component.js";
 import PokeCard from "./Poke-card.js";
-import PaginationButton from "./Pagination.js";
+import Button from "./Button.js";
 
 class Page extends Component {
   pokemonServices;
@@ -71,19 +71,14 @@ class Page extends Component {
     })();
 
     const paginationContainer = document.querySelector(".pagination");
-    new PaginationButton(
+    new Button(
       paginationContainer,
       "pagination__previous",
       "<",
       this.previousPage
     );
 
-    new PaginationButton(
-      paginationContainer,
-      "pagination__next",
-      ">",
-      this.nextPage
-    );
+    new Button(paginationContainer, "pagination__next", ">", this.nextPage);
 
     if (this.page === 0) {
       const previousPageButton = document.querySelector(

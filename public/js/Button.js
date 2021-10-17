@@ -1,7 +1,7 @@
 /* eslint-disable no-new */
 import Component from "./Component.js";
 
-class PaginationButton extends Component {
+class Button extends Component {
   text;
   actionOnClick;
 
@@ -20,4 +20,4 @@ class PaginationButton extends Component {
   }
 }
 
-export default PaginationButton;
+export default Button;

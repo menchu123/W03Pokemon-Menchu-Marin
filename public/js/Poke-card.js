@@ -34,7 +34,15 @@ class PokeCard extends Component {
   }
 
   action = () => {
-    console.log(this.element);
+    console.log(this.url);
+    const pokemonServices = new PokeServices();
+    pokemonServices.postPokemons(
+      {
+        name: this.pokeName,
+        type: this.url,
+      },
+      "https://pokeapi-menchu.herokuapp.com/pokemon"
+    );
   };
 
   generateHtml() {

@@ -13,7 +13,6 @@ class PokeServices {
   }
 
   async postPokemons(pokemon, url) {
-    debugger;
     await fetch(url, {
       method: "POST",
       headers: {

@@ -43,6 +43,8 @@ class PokeCard extends Component {
       },
       "https://pokeapi-menchu.herokuapp.com/pokemon"
     );
+    console.log(this.button);
+    this.button.element.classList.toggle("fas");
   };
 
   generateHtml() {

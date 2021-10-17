@@ -1,17 +1,21 @@
 /* eslint-disable no-new */
 import Component from "./Component.js";
 import PokeServices from "./Poke-services.js";
+import Button from "./Button.js";
 
 class PokeCard extends Component {
   url;
+  pokemon;
   pokeName;
   pokeNumber;
   pokeImg;
   pokeType = [];
+  favButton;
 
-  constructor(parentElement, url) {
+  constructor(parentElement, pokemon) {
     super(parentElement, "pokemon-card", "li");
-    this.url = url;
+    this.pokemon = pokemon;
+    this.url = this.pokemon.url;
 
     (async () => {
       const pokeServices = new PokeServices(this.url);
@@ -29,10 +33,22 @@ class PokeCard extends Component {
     this.generateHtml();
   }
 
+  action = () => {
+    console.log(this.url);
+    const pokemonServices = new PokeServices();
+    pokemonServices.postPokemons(
+      {
+        name: this.pokeName,
+        url: this.url,
+      },
+      "https://pokeapi-menchu.herokuapp.com/pokemon"
+    );
+  };
+
   generateHtml() {
-    const html = `
-                  <i class="far fa-heart" "pokemon-card__favorite" "pokemon-card__favorite--unselected"></i>
-                  <i class="fas fa-heart" "pokemon-card__favorite" "pokemon-card__favorite--selected"></i>
+    const html = `<div class="favorite">
+                
+                  </div>
                   <img
                 src="${this.pokeImg}"
                 alt="${this.pokeName}"
@@ -52,6 +68,14 @@ class PokeCard extends Component {
     `;
 
     this.element.innerHTML = html;
+
+    const favoriteButtonContainer = this.element.querySelector(".favorite");
+    this.button = new Button(
+      favoriteButtonContainer,
+      "far fa-heart",
+      "",
+      this.action
+    );
   }
 }
 

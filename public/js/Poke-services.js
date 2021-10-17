@@ -13,14 +13,13 @@ class PokeServices {
   }
 
   async postPokemons(pokemon, url) {
-    const response = await fetch(url, {
+    await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(pokemon),
     });
-    const newElement = await response.json();
   }
 
   async deletePokemon(url, id) {

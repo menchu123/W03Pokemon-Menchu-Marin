@@ -1,7 +1,7 @@
 /* eslint-disable no-new */
 import Component from "./Component.js";
 import PokeCard from "./Poke-card.js";
-import PaginationButton from "./Pagination.js";
+import Button from "./Button.js";
 
 class Page extends Component {
   pokemonServices;
@@ -43,8 +43,8 @@ class Page extends Component {
   generateHTML(url) {
     const html = `     <header class="header">
         <nav class="header__nav">
-        <button class="my-pokemon"></i>MY POKEMON</button>
-        <h1 class="main__title"><img class="main__logo" src="img/pokemon-logo-black-transparent.png"><img></h1>
+        <button class="my-pokemon" onclick="location.href='my-pokemon.html'"></i>MY POKEMON</button>
+        <h1 class="main__title"><img class="main__logo" src="img/pokemon-logo-black-transparent.png" alt="Pokemon Logo" onclick="location.href='index.html'"><img></h1>
         </nav>
       </header>
       <main class="main">
@@ -66,24 +66,19 @@ class Page extends Component {
       const getPokeService = await this.pokemonServices.getPokemons(url);
       const getPokeList = getPokeService.results;
       getPokeList.forEach((pokemon) => {
-        new PokeCard(pokeListContainer, pokemon.url);
+        new PokeCard(pokeListContainer, pokemon);
       });
     })();
 
     const paginationContainer = document.querySelector(".pagination");
-    new PaginationButton(
+    new Button(
       paginationContainer,
       "pagination__previous",
       "<",
       this.previousPage
     );
 
-    new PaginationButton(
-      paginationContainer,
-      "pagination__next",
-      ">",
-      this.nextPage
-    );
+    new Button(paginationContainer, "pagination__next", ">", this.nextPage);
 
     if (this.page === 0) {
       const previousPageButton = document.querySelector(

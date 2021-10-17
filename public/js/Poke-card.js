@@ -4,14 +4,16 @@ import PokeServices from "./Poke-services.js";
 
 class PokeCard extends Component {
   url;
+  pokemon;
   pokeName;
   pokeNumber;
   pokeImg;
   pokeType = [];
 
-  constructor(parentElement, url) {
+  constructor(parentElement, pokemon) {
     super(parentElement, "pokemon-card", "li");
-    this.url = url;
+    this.pokemon = pokemon;
+    this.url = this.pokemon.url;
 
     (async () => {
       const pokeServices = new PokeServices(this.url);

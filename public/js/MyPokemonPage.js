@@ -6,39 +6,14 @@ import PaginationButton from "./Pagination.js";
 class MyPokemonPage extends Component {
   pokemonServices;
   url;
-  page = 0;
-  pagedURL;
 
   constructor(parentElement, pokemonServices, url) {
     super(parentElement, "app-container");
 
     this.pokemonServices = pokemonServices;
     this.url = url;
-    this.pagedURL = url;
-    this.getPageURL();
-    this.generateHTML(this.pagedURL);
+    this.generateHTML(this.url);
   }
-
-  getPageURL = () => {
-    const offset = this.page * 9;
-    const urlPage = `?offset=${offset}&limit=9`;
-    const pagedURL = this.url + urlPage;
-    this.pagedURL = pagedURL;
-  };
-
-  previousPage = () => {
-    if (this.page > 0) {
-      this.page--;
-      this.getPageURL();
-      this.generateHTML(this.pagedURL);
-    }
-  };
-
-  nextPage = () => {
-    this.page++;
-    this.getPageURL();
-    this.generateHTML(this.pagedURL);
-  };
 
   generateHTML(url) {
     const html = `     <header class="header">
@@ -66,28 +41,6 @@ class MyPokemonPage extends Component {
       const getPokeService = await this.pokemonServices.getPokemons(url);
       console.log(getPokeService);
     })();
-
-    const paginationContainer = document.querySelector(".pagination");
-    new PaginationButton(
-      paginationContainer,
-      "pagination__previous",
-      "<",
-      this.previousPage
-    );
-
-    new PaginationButton(
-      paginationContainer,
-      "pagination__next",
-      ">",
-      this.nextPage
-    );
-
-    if (this.page === 0) {
-      const previousPageButton = document.querySelector(
-        ".pagination__previous"
-      );
-      previousPageButton.classList.add("button--disabled");
-    }
   }
 }
 

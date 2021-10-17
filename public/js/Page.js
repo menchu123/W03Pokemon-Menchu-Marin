@@ -66,7 +66,7 @@ class Page extends Component {
       const getPokeService = await this.pokemonServices.getPokemons(url);
       const getPokeList = getPokeService.results;
       getPokeList.forEach((pokemon) => {
-        new PokeCard(pokeListContainer, pokemon.url);
+        new PokeCard(pokeListContainer, pokemon);
       });
     })();
 

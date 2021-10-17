@@ -21,7 +21,7 @@ new MyPokemonPage(
 
 // pokemonServices.deletePokemon(
 //   "https://pokeapi-menchu.herokuapp.com/pokemon/",
-//   6
+//   4
 // );
 
 // (async () => {

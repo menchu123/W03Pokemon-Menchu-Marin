@@ -2,6 +2,7 @@
 import Component from "./Component.js";
 import PokeServices from "./Poke-services.js";
 import Button from "./Button.js";
+import PokeDetail from "./Pokemon-detail.js";
 
 class PokeCard extends Component {
   url;
@@ -12,6 +13,7 @@ class PokeCard extends Component {
   pokeType = [];
   button;
   isSelected;
+  modal;
 
   constructor(parentElement, pokemon, isSelected, id) {
     super(parentElement, "pokemon-card", "li");
@@ -97,11 +99,11 @@ class PokeCard extends Component {
     const html = `<div class="favorite">
                 
                   </div>
-                  <img
+                <a class="to-detail"><img
                 src="${this.pokeImg}"
                 alt="${this.pokeName}"
                 class="pokemon-card__img"
-              />
+              /></a>
               <span class="pokemon-card__number">#${this.pokeNumber}</span>
               <span class="pokemon-card__name">${this.pokeName}</span>
               <ul class="pokemon-card__types">
@@ -123,6 +125,11 @@ class PokeCard extends Component {
     this.button = new Button(favoriteButtonContainer, buttonClass, "", action);
 
     this.selectFavedPokemon();
+
+    const linkToDetail = this.element.querySelector(".to-detail");
+    linkToDetail.addEventListener("click", () => {
+      this.modal = new PokeDetail(this.pokemon);
+    });
   }
 }
 

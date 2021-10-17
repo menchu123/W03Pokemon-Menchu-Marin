@@ -41,12 +41,7 @@ class Page extends Component {
   };
 
   generateHTML(url) {
-    const html = `     <header class="header">
-        <nav class="header__nav">
-        <button class="my-pokemon" onclick="location.href='my-pokemon.html'"></i>MY POKEMON</button>
-        <h1 class="main__title"><img class="main__logo" src="img/pokemon-logo-black-transparent.png" alt="Pokemon Logo" onclick="location.href='index.html'"><img></h1>
-        </nav>
-      </header>
+    const html = `     
       <main class="main">
         
         <section class="pokemon-container">

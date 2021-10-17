@@ -42,7 +42,7 @@ class MyPokemonPage extends Component {
       const getPokeServiceLocal = await this.pokemonServices.getPokemons(url);
       console.log(getPokeServiceLocal);
       getPokeServiceLocal.forEach((pokemon) => {
-        new PokeCard(pokeListContainer, pokemon);
+        new PokeCard(pokeListContainer, pokemon, true);
       });
     })();
   }

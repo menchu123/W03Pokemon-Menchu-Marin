@@ -18,7 +18,6 @@ class PokeCard extends Component {
     this.url = this.pokemon.url;
     this.isSelected = isSelected;
     this.id = id;
-    console.log(this.pokemon.id);
 
     (async () => {
       const pokeServices = new PokeServices(this.url);
@@ -34,24 +33,41 @@ class PokeCard extends Component {
     })();
 
     this.generateHtml();
+    this.checkPokemon();
   }
 
-  favPokemon = () => {
-    console.log(this.url);
+  checkPokemon = () => {};
+
+  favPokemon = async () => {
     const pokemonServices = new PokeServices();
-    pokemonServices.postPokemons(
-      {
-        name: this.pokeName,
-        url: this.url,
-      },
+    const favedPokemons = await pokemonServices.getPokemons(
       "https://pokeapi-menchu.herokuapp.com/pokemon"
     );
-    console.log(this.button);
-    this.button.element.classList.add("fas");
+
+    const favedPokemonsNames = [];
+    favedPokemons.forEach((pokemon) => {
+      favedPokemonsNames.push(pokemon.name.toLowerCase());
+    });
+
+    console.log(favedPokemonsNames);
+    console.log(this.pokemon.name);
+    const isDuplicate = favedPokemonsNames.some(
+      (pokemonName) => pokemonName === this.pokemon.name
+    );
+    console.log(!isDuplicate);
+    if (!isDuplicate) {
+      pokemonServices.postPokemons(
+        {
+          name: this.pokeName,
+          url: this.url,
+        },
+        "https://pokeapi-menchu.herokuapp.com/pokemon"
+      );
+      this.button.element.classList.add("fas");
+    }
   };
 
   unfavPokemon = () => {
-    console.log(this.url);
     const pokemonServices = new PokeServices();
     pokemonServices.deletePokemon(
       "https://pokeapi-menchu.herokuapp.com/pokemon/",
@@ -59,7 +75,6 @@ class PokeCard extends Component {
     );
     this.button.element.classList.remove("fas");
     this.button.element.classList.add("far");
-    console.log(this.button);
   };
 
   generateHtml() {

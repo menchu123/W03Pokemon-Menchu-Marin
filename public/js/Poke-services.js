@@ -2,9 +2,9 @@
 class PokeServices {
   apiUrl;
 
-  constructor(url) {
-    this.apiUrl = url;
-  }
+  // constructor(url) {
+  //   this.apiUrl = url;
+  // }
 
   async getPokemons(url) {
     const response = await fetch(url);

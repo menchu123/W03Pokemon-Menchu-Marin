@@ -25,9 +25,7 @@ new MyPokemonPage(
 // );
 
 // (async () => {
-//   const response = await fetch(
-//     `https://pokemon-api-w03-wkch.herokuapp.com/pokemon`
-//   );
+//   const response = await fetch(`https://pokeapi-menchu.herokuapp.com/pokemon`);
 //   const pokemons = await response.json();
 //   console.log(pokemons);
 //   return pokemons;
